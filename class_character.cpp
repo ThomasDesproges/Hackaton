@@ -54,7 +54,7 @@ class Character{
             i_left = 1;
         }
         int ch = mvwinch(stdscr,position_y+i_up-i_down,position_x+i_right-i_left);
-        if (ch = ERR){
+        if ((ch = ERR) or (ch=' ')){
             return true;
         }
         else{
@@ -64,7 +64,9 @@ class Character{
 
     void move_up(){
         wmove(stdscr,position_y,position_x);
-
+        addch(' ');
+        wmove(stdscr,position_y+1,position_x);
+        addch('@');
         position_y++;
     }
 
