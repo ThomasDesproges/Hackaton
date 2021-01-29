@@ -15,17 +15,18 @@ void Character::movement(char entree){
     //Méthode permettant de déplacer le personnage d'une case suivant la commande d'entrée.
     //La méthode déplace le personnage si cela est possible.
     //on tourne dans le sens horaire, on commence en haut.
-    int dx,dy = 0;0;
-    if (entree == controls[0]){
+    int dx = 0 ;
+    int dy = 0 ;
+    if (entree == controls[0]){ // TOP
         dy = -1;
     }
-    if (entree == controls[1]){
+    else if (entree == controls[1]){ // RIGHT
         dx = 1;
     }
-    if (entree == controls[2]){
+    else if (entree == controls[2]){ // BOTTOM
         dy = 1;
     }
-    if (entree == controls[3]){
+    else if (entree == controls[3]){ // LEFT
         dx = -1;
     }
     if ((mvwinch(stdscr,position_y+dy,position_x+dx) != '|') and (mvwinch(stdscr,position_y+dy,position_x+dx) != '-')){
@@ -35,10 +36,10 @@ void Character::movement(char entree){
         addch('@');
         position_x = position_x+dx;
         position_y = position_y+dy;
-        wmove(stdscr,position_y+5,position_x+5);
-        addch('y');
-        wmove(stdscr,position_y+5,position_x+6);
-        addch(mvwinch(stdscr,position_y+dy,position_x+dx));
+        // wmove(stdscr,position_y+5,position_x+5);
+        // addch('y');
+        // wmove(stdscr,position_y+5,position_x+6);
+        // addch(mvwinch(stdscr,position_y,position_x));
     }
     return;
 }
