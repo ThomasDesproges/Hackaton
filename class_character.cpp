@@ -12,6 +12,12 @@ class Character{
     Character(int position_x,int position_y, int point_de_vie, char controls[4]) : position_x(position_x),position_y(position_y),PV(point_de_vie), controls(controls) {
     }
 
+    void affiche(){
+        wmove(stdscr,position_y,position_x);
+        addch('@');
+        return
+    }
+
     void movement(char entree){ 
         //Méthode permettant de déplacer le personnage d'une case suivant la commande d'entrée.
         //La méthode déplace le personnage si cela est possible. N'attaque
@@ -98,7 +104,15 @@ class Character{
     int position_x,position_y;
     int PV;
     int bourse;
-    Item inventaire[5];
+    Item* inventaire[5];
     char* controls;
 
 };
+
+class Monster{
+    public :
+    Monster(int PV, char symbol) : {}
+
+
+};
+
