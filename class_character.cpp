@@ -1,6 +1,7 @@
-#include<iostream>
-#include<ncurses.h>
-#include"item.h"
+#include <iostream>
+#include <ncurses.h>
+#include "class_character.h"
+// #include"item.h"
 
 #pragma once
 
@@ -93,12 +94,4 @@ void Character::affiche_caracteristiques_heros(){
 void Character::add_PV(int amount){
     PV += amount;
 }
-
-
-class Monster{
-public :
-Monster(int PV, char symbol) : {}
-
-
-};
 

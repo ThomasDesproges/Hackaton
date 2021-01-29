@@ -1,11 +1,13 @@
 #include<iostream>
 #include<ncurses.h>
-#include "item.h"
+// #include "item.h"
 #pragma once
 
 class Character{
     public :
     Character(int position_x,int position_y, int point_de_vie, char controls[4]);
+
+    void affiche();
 
     void movement(char entree);
 
@@ -29,7 +31,7 @@ class Character{
     int position_x,position_y;
     int PV;
     int bourse;
-    Item* inventaire[5];
+    // Item* inventaire[5];
     char* controls;
 
 };
