@@ -86,7 +86,7 @@ void play () {
     // On initialise le terminal en ncurses.
     init();
     // On affiche le héro.
-    // Hero.affiche(xcursor, ycursor);
+    Hero.affiche();
 
     char c = '\0';
     // On entre dans une boucle sans fin sauf si le caractère 'q' est
