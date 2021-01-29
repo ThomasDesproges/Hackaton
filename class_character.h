@@ -29,6 +29,8 @@ class Character{
 
     void add_PV(int amount);
 
+    void assault();
+
     private : 
     int position_x,position_y;
     int PV;
@@ -36,5 +38,6 @@ class Character{
     Item* inventaire[5];
     char* controls;
     bool remettre_la_porte;
+    
 
 };

@@ -30,42 +30,50 @@ void Character::movement(char entree){
     else if (entree == controls[3]){ // LEFT
         dx = -1;
     }
-    if ((mvwinch(stdscr,position_y+dy,position_x+dx) == 'o')){
-        wmove(stdscr,position_y,position_x);
-        addch(' ');
-        wmove(stdscr,position_y+dy,position_x+dx);
-        addch('@');
-        position_x = position_x+dx;
-        position_y = position_y+dy;
-    }
-    else if ((mvwinch(stdscr,position_y+dy,position_x+dx) == '+')){
-        wmove(stdscr,position_y,position_x);
-        addch(' ');
-        wmove(stdscr,position_y+dy,position_x+dx);
-        addch('@');
-        position_x = position_x+dx;
-        position_y = position_y+dy;
-        if (remettre_la_porte){
-            wmove(stdscr,position_y-dy,position_x-dx);
-            addch('+');
-            remettre_la_porte = false;
-        }
-        remettre_la_porte = true;
-    }
-    else if ((mvwinch(stdscr,position_y+dy,position_x+dx) == '|') and (mvwinch(stdscr,position_y+dy,position_x+dx) == '-')){
-    }
-    else{
-        wmove(stdscr,position_y,position_x);
-        addch(' ');
-        wmove(stdscr,position_y+dy,position_x+dx);
-        addch('@');
-        position_x = position_x+dx;
-        position_y = position_y+dy;
-        if (remettre_la_porte){
-            wmove(stdscr,position_y-dy,position_x-dx);
-            addch('+');
-            remettre_la_porte = false;
-        }
+    switch (mvwinch(stdscr,position_y+dy,position_x+dx)){
+        case 'o' :
+            wmove(stdscr,position_y,position_x);
+            addch(' ');
+            wmove(stdscr,position_y+dy,position_x+dx);
+            addch('@');
+            position_x = position_x+dx;
+            position_y = position_y+dy;
+            if (remettre_la_porte){
+                wmove(stdscr,position_y-dy,position_x-dx);
+                addch('+');
+                remettre_la_porte = false;
+            }
+            break;
+        case '|' :
+            break;
+        case '-' :
+            break;
+        case '+' :
+            wmove(stdscr,position_y,position_x);
+            addch(' ');
+            wmove(stdscr,position_y+dy,position_x+dx);
+            addch('@');
+            position_x = position_x+dx;
+            position_y = position_y+dy;
+            if (remettre_la_porte){
+                wmove(stdscr,position_y-dy,position_x-dx);
+                addch('+');
+                remettre_la_porte = false;
+            }
+            remettre_la_porte = true;
+            break;
+        default :
+            wmove(stdscr,position_y,position_x);
+            addch(' ');
+            wmove(stdscr,position_y+dy,position_x+dx);
+            addch('@');
+            position_x = position_x+dx;
+            position_y = position_y+dy;
+            if (remettre_la_porte){
+                wmove(stdscr,position_y-dy,position_x-dx);
+                addch('+');
+                remettre_la_porte = false;
+            }
     }
     return;
 }
@@ -81,5 +89,9 @@ void Character::affiche_caracteristiques_heros(){
 
 void Character::add_PV(int amount){
     PV += amount;
+}
+
+void assault(){
+    
 }
 
