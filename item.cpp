@@ -1,6 +1,8 @@
 #include "item.h"
 #include <ncurses.h>
 
+#include "class_character.h"
+
 int* Item::position(){
         return(pos);
     }

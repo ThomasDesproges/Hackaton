@@ -1,6 +1,7 @@
 #pragma once
-#include "class_character.h"
 
+
+class Character;
 
 // Classe générale Item
 
