@@ -1,17 +1,18 @@
 #pragma once
-
+#include "class_character.h"
 // Classe générale Item
+
 
 class Item {
     public :
 
+    Item(int x,int y,bool IC,char symbol);
     bool inventory_compatible;
     char symbol;
     int* position();
 
     protected :
 
-    Item(int x,int y,bool IC,char symbol);
 
     private :
 
@@ -32,13 +33,14 @@ class Gold : public Item {
 };
 
 // Classe fille Potion
-/*
+
 class Potion : public Item {
     public:
 
-
+    Potion(int x,int y);
+    void assign(Character* charac);
+    int HP_to_add = 5;
     private:
+    Character* carrier;
     
 };
-
-*/
