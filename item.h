@@ -9,6 +9,7 @@ class Item {
     char symbol;
     int* position();
     virtual void do_effect()=0;
+    void affiche();
 
     protected :
 
