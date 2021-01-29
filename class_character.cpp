@@ -91,7 +91,7 @@ void Character::add_PV(int amount){
     PV += amount;
 }
 
-void assault(){
+void Character::assault(){
     
 }
 
