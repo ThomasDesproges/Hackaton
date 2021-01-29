@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <ncurses.h>
 
 #include "message.h"
@@ -93,6 +94,21 @@ void play () {
     Gold gold(5,7,10) ;
     gold.affiche();
 
+    Gold gold2(15,21,10) ;
+    gold2.affiche();
+
+    Potion pot1(20,12) ;
+    pot1.affiche();
+
+    Potion pot2(5,52) ;
+    pot2.affiche();
+
+    std::vector<Item*> liste_items;
+    liste_items.push_back(&gold);
+    liste_items.push_back(&gold2);
+    liste_items.push_back(&pot1);
+    liste_items.push_back(&pot2);
+
     // On affiche le héro.
     Hero.affiche();
 
@@ -111,12 +127,6 @@ void play () {
             // Si le caractère est une direction en bouge le héro.
             Hero.movement(c);
         }
-        // else {
-        //     // Et là le caractère peut être des tas d'autres choses !
-        //     // monstres qu'il faut combattre, objet magique qu'il faut
-        //     // ramasser etc.
-        //     print_char_error_message(c);
-        // }
     }
     // Vous devez terminer curses proprement sinon votre terminal sera
     // dans un état tout bizarre...
