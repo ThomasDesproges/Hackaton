@@ -1,9 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "class_character.h"
-// #include"item.h"
 
-#pragma once
 
 Character::Character(int position_x,int position_y, int point_de_vie, char controls[4]) : position_x(position_x),position_y(position_y),PV(point_de_vie), controls(controls) {
 }

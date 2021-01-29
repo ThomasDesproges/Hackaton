@@ -1,7 +1,9 @@
+#pragma once
+
 #include<iostream>
 #include<ncurses.h>
-// #include "item.h"
-#pragma once
+
+class Item;
 
 class Character{
     public :
@@ -31,7 +33,7 @@ class Character{
     int position_x,position_y;
     int PV;
     int bourse;
-    // Item* inventaire[5];
+    Item* inventaire[5];
     char* controls;
 
 };
