@@ -17,6 +17,7 @@ void Character::movement(char entree){
     //on tourne dans le sens horaire, on commence en haut.
     int dx = 0 ;
     int dy = 0 ;
+    bool remettre_la_porte = false;
     if (entree == controls[0]){ // TOP
         dy = -1;
     }
@@ -29,18 +30,46 @@ void Character::movement(char entree){
     else if (entree == controls[3]){ // LEFT
         dx = -1;
     }
-    if ((mvwinch(stdscr,position_y+dy,position_x+dx) != '|') and (mvwinch(stdscr,position_y+dy,position_x+dx) != '-')){
+    if (mvwinch(stdscr,position_y+dy,position_x+dx) == ERR){
         wmove(stdscr,position_y,position_x);
         addch(' ');
         wmove(stdscr,position_y+dy,position_x+dx);
         addch('@');
         position_x = position_x+dx;
         position_y = position_y+dy;
-        // wmove(stdscr,position_y+5,position_x+5);
-        // addch('y');
-        // wmove(stdscr,position_y+5,position_x+6);
-        // addch(mvwinch(stdscr,position_y,position_x));
+        if (remettre_la_porte){
+            wmove(stdscr,position_y-dy,position_x-dx);
+            addch('+');
+            remettre_la_porte = false;
+        }
     }
+    else if ((mvwinch(stdscr,position_y+dy,position_x+dx) == '+')){
+        wmove(stdscr,position_y,position_x);
+        addch(' ');
+        wmove(stdscr,position_y+dy,position_x+dx);
+        addch('@');
+        position_x = position_x+dx;
+        position_y = position_y+dy;
+        if (remettre_la_porte){
+            wmove(stdscr,position_y-dy,position_x-dx);
+            addch('+');
+            remettre_la_porte = false;
+        }
+        remettre_la_porte = true;
+    }
+    else if ((mvwinch(stdscr,position_y+dy,position_x+dx) == '|') and (mvwinch(stdscr,position_y+dy,position_x+dx) == '-')){
+    }
+    else {
+        char ch_item = mvwinch(stdscr,position_y+dy,position_x+dx);
+        wmove(stdscr,position_y,position_x);
+        addch(' ');
+        wmove(stdscr,position_y+dy,position_x+dx);
+        addch('@');
+        position_x = position_x+dx;
+        position_y = position_y+dy;
+        //pointeur de l'item
+    }
+    
     return;
 }
 
