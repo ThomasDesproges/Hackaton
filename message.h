@@ -14,7 +14,7 @@ class message {
 		int limit_bottom;
 		int limit_right;
 		getmaxyx(stdscr,limit_right,limit_bottom);
-		char* whiteline = new char [ limit_right ];
+		whiteline = new char [ limit_right ];
 		for (int i=0; i<limit_right-1; ++i){
 			whiteline[i]+=' ';
 		}
@@ -23,7 +23,9 @@ class message {
 	
 	}
 	
-	~message(){};
+	~message(){
+		delete [] whiteline ;
+	};
 	
 	void print(){
 		move(x_msg,y_msg);
@@ -41,6 +43,6 @@ class message {
 	const char* contenu;
 	const int x_msg;
 	const int y_msg;
-	const char* whiteline;
+	char* whiteline;
 
 };

@@ -95,7 +95,7 @@ void play () {
 
     // On affiche le héro.
     Hero.affiche();
-    
+
     std::string str = "Welcome brave hero!";
     const char* cstr = str.c_str() ;
     message msg (cstr) ;
