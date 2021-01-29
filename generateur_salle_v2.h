@@ -73,9 +73,9 @@ h_corridor(int x_min,int y_min, int y_max): x_min(x_min), y_min(y_min), y_max(y_
 void display(){//afficher la salle on utilise | pour les murs verticaux, _ pour les murs horizontaux
 	for(int i=x_min; i<x_min+3; ++i){
 		move(i,y_min);
-		addch(' ');
+		addch('+');
 		move(i,y_max);
-		addch(' ');
+		addch('+');
 		refresh();
 	}
 	for (int j=y_min; j<y_max+1;++j){
@@ -118,9 +118,9 @@ void display(){//afficher la salle on utilise | pour les murs verticaux, _ pour 
 	}
 	for (int j=y_min; j<y_min+4;++j){
 		move(x_min,j);
-		addch(' ');
+		addch('+');
 		move(x_max,j);
-		addch(' ');
+		addch('+');
 		refresh();
 	}
 
