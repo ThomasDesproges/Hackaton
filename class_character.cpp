@@ -1,18 +1,12 @@
 #include<iostream>
 #include<ncurses.h>
-#include"item.h"
+#include "item.h"
+#include "class_character.h"
 
-#pragma once
-
-
-
-
-class Character{
-    public :
-    Character(int position_x,int position_y, int point_de_vie, char controls[4]) : position_x(position_x),position_y(position_y),PV(point_de_vie), controls(controls) {
+Character::Character(int position_x,int position_y, int point_de_vie, char controls[4]) : position_x(position_x),position_y(position_y),PV(point_de_vie), controls(controls) {
     }
 
-    void movement(char entree){ 
+void Character::movement(char entree){ 
         //Méthode permettant de déplacer le personnage d'une case suivant la commande d'entrée.
         //La méthode déplace le personnage si cela est possible. N'attaque
         //on tourne dans le sens horaire, on commence en haut.
@@ -39,7 +33,7 @@ class Character{
         return;
     }
 
-    bool movement_possible(char entree){
+bool Character::movement_possible(char entree){
         int i_up,i_right,i_down,i_left;
         if (entree == controls[0]){
             i_up = 1;
@@ -62,7 +56,7 @@ class Character{
         }
     }
 
-    void move_up(){
+void Character::move_up(){
         wmove(stdscr,position_y,position_x);
         addch(' ');
         wmove(stdscr,position_y+1,position_x);
@@ -70,35 +64,25 @@ class Character{
         position_y++;
     }
 
-    void move_right(){
+void Character::move_right(){
         position_x++;
     }
 
-    void move_down(){
-        position_y--;
-    }
+void Character::move_down(){
+    position_y--;
+}
 
-    void move_left(){
-        position_x--;
-    }
+void Character::move_left(){
+    position_x--;
+}
 
-    void add_gold(int amount_of_gold){
-        bourse += amount_of_gold;
-    }
+void Character::add_gold(int amount_of_gold){
+    bourse += amount_of_gold;
+}
 
-    void affiche_caracteristiques_heros(){
+void Character::affiche_caracteristiques_heros(){
+}
 
-    }
-
-    void add_PV(int amount){
-        PV += amount;
-    }
-
-    private : 
-    int position_x,position_y;
-    int PV;
-    int bourse;
-    Item inventaire[5];
-    char* controls;
-
-};
+void Character::add_PV(int amount){
+    PV += amount;
+}
