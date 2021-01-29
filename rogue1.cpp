@@ -3,9 +3,10 @@
 #include <ncurses.h>
 
 // #include "message.h"
-#include "generateur_salle_v1.h"
+#include "generateur_salle_v2.h"
+#include "generateur_niveau_v1.h"
 #include "class_character.cpp"
-// #include "item.h"
+#include "item.cpp"
 
 
 
@@ -43,8 +44,8 @@ Character Hero(xcursor, ycursor, pv, commands) ;
 // INITIALISATION DU TERMINAL
 // ==========================
 void init () {
-  // on initialise le terminal en mode curses
-    initscr(); // --> dans le code de Pierre (avec la classe...)
+    // on initialise le terminal en mode curses
+    initscr();
     
     clear();
     // on efface le stdscr (le terminal, the standard screen)
@@ -74,8 +75,10 @@ void init () {
     getmaxyx(stdscr,limite_bottom, limite_right);
     limite_bottom=limite_bottom-1;
     limite_right=limite_right-1;
-    room piece(1,limite_bottom,1,limite_right);
-    piece.display();
+    // room piece(1,limite_bottom,1,limite_right);
+    // piece.display();
+    level niveau ;
+    niveau.generate() ;
 }
 
 bool is_direction (char c) {
@@ -85,6 +88,11 @@ bool is_direction (char c) {
 void play () {
     // On initialise le terminal en ncurses.
     init();
+
+    // On affiche les items :
+    Gold gold(5,7,10) ;
+    gold.affiche();
+
     // On affiche le héro.
     Hero.affiche();
 

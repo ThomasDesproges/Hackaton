@@ -16,19 +16,31 @@ void Item::affiche(){
     addch(symbol);
 }
 
-Gold::Gold(int x,int y,int value):Item(x,y,false,'o'),value(value){
+void Item::assign(Character* charac){
+    carrier=charac;
 }
 
-void Gold::do_effect(){}
+bool Item::is(int a, int b){ // permet de regarder si cet item est celui aux coordonées (a,b)
+    return((a==pos[0] and b== pos[1]));
+}
+
+Gold::Gold(int x,int y,int coin_value):Item(x,y,false,'o'),coin_value(coin_value){
+}
+
+void Gold::do_effect(){ // ajoute l'argent au porteur
+    if (carrier!=nullptr){
+        (*carrier).add_gold(coin_value);
+    }
+
+}
 
 
 Potion::Potion(int x, int y):Item(x,y,true,'&'){   
 }
 
-void Potion::assign(Character* charac){
-    carrier=charac;}
 
-void Potion::do_effect(){  
+
+void Potion::do_effect(){  // ajoute les PV au porteur
     if (carrier!=nullptr){
             (*carrier).add_PV(HP_to_add);
         }

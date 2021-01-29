@@ -3,20 +3,24 @@
 // Classe générale Item
 
 class Item {
+    friend class Gold;
+    friend class Potion;
     public :
 
     bool inventory_compatible;
     char symbol;
     int* position();
+    void assign(Character* charac);
     virtual void do_effect()=0;
     void affiche();
+    bool is(int a, int b);
 
     protected :
 
     Item(int x,int y,bool IC,char symbol);
 
     private :
-
+    Character* carrier;
     int pos [2];
 
 };
@@ -26,8 +30,8 @@ class Item {
 class Gold : public Item {
     public :
     void do_effect();
-    int value;
-    Gold(int x,int y,int value);
+    int coin_value;
+    Gold(int x,int y,int coin_value);
 
     private :
 
@@ -40,9 +44,8 @@ class Potion : public Item {
     public:
 
     Potion(int x, int y);
-    void assign(Character* charac);
     int HP_to_add=5;
     void do_effect();
     private:
-    Character* carrier;
+
 };
