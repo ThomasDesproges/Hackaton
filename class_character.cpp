@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "class_character.h"
-
+#include "item.h"
 
 Character::Character(int position_x,int position_y, int point_de_vie, char controls[4]) : position_x(position_x),position_y(position_y),PV(point_de_vie), controls(controls) {
 remettre_la_porte = false;
@@ -43,6 +43,7 @@ void Character::movement(char entree){
                 addch('+');
                 remettre_la_porte = false;
             }
+            add_PV(10);
             break;
         case '|' :
             break;
@@ -63,6 +64,11 @@ void Character::movement(char entree){
             remettre_la_porte = true;
             break;
         default :
+            // Item* p_item = search_item(liste_item,position_y+dy,position_x+dx);
+            // if (p_item != nullptr){
+            //     (*p_item).assign(this);
+            //     (*p_item).do_effect();
+            // }
             wmove(stdscr,position_y,position_x);
             addch(' ');
             wmove(stdscr,position_y+dy,position_x+dx);
@@ -74,6 +80,7 @@ void Character::movement(char entree){
                 addch('+');
                 remettre_la_porte = false;
             }
+            affiche_caracteristiques_heros();
     }
     return;
 }
@@ -84,7 +91,10 @@ void Character::add_gold(int amount_of_gold){
 }
 
 void Character::affiche_caracteristiques_heros(){
-
+    std::string str = std::to_string(PV);
+    const char* cstr = str.c_str() ;
+    message msg (cstr) ;
+    msg.print();
 }
 
 void Character::add_PV(int amount){
