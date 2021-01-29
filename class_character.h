@@ -35,5 +35,6 @@ class Character{
     int bourse;
     Item* inventaire[5];
     char* controls;
+    bool remettre_la_porte;
 
 };
