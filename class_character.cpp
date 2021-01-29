@@ -54,7 +54,7 @@ bool Character::movement_possible(char entree){
     if (entree == controls[3]){
         i_left = 1;
     }
-    int ch = mvwinch(stdscr,position_y+i_up-i_down,position_x+i_right-i_left);
+    int ch = mvwinch(stdscr,position_y+i_right-i_left,position_x+i_down-i_up);
     if ((ch = ERR) or (ch=' ')){
         return true;
     }
@@ -66,21 +66,33 @@ bool Character::movement_possible(char entree){
 void Character::move_up(){
     wmove(stdscr,position_y,position_x);
     addch(' ');
+    wmove(stdscr,position_y,position_x-1);
+    addch('@');
+    position_x--;
+}
+
+void Character::move_right(){
+    wmove(stdscr,position_y,position_x);
+    addch(' ');
     wmove(stdscr,position_y+1,position_x);
     addch('@');
     position_y++;
 }
 
-void Character::move_right(){
+void Character::move_down(){
+    wmove(stdscr,position_y,position_x);
+    addch(' ');
+    wmove(stdscr,position_y,position_x+1);
+    addch('@');
     position_x++;
 }
 
-void Character::move_down(){
-    position_y--;
-}
-
 void Character::move_left(){
-    position_x--;
+    wmove(stdscr,position_y,position_x);
+    addch(' ');
+    wmove(stdscr,position_y-1,position_x);
+    addch('@');
+    position_y--;
 }
 
 void Character::add_gold(int amount_of_gold){
