@@ -39,7 +39,7 @@ void Character::movement(char entree){
 }
 
 bool Character::movement_possible(char entree){
-    int i_up,i_right,i_down,i_left;
+    int i_up,i_right,i_down,i_left = 0;0;0;0;
     if (entree == controls[0]){
         i_up = 1;
     }
@@ -53,11 +53,11 @@ bool Character::movement_possible(char entree){
         i_left = 1;
     }
     int ch = mvwinch(stdscr,position_y+i_right-i_left,position_x+i_down-i_up);
-    if ((ch = ERR) or (ch=' ')){
-        return true;
+    if ((ch=='|')or(ch=='-')){
+        return false;
     }
     else{
-        return false;
+        return true;
     }
 }
 
