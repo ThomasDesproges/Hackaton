@@ -74,13 +74,13 @@ void Character::move_right(){
     addch(' ');
     wmove(stdscr,position_y,position_x+1);
     addch('@');
-    position_y++;
+    position_x++;
 }
 
 void Character::move_down(){
     wmove(stdscr,position_y,position_x);
     addch(' ');
-    wmove(stdscr,position_y++,position_x);
+    wmove(stdscr,position_y+1,position_x);
     addch('@');
     position_y++;
 }
@@ -90,7 +90,7 @@ void Character::move_left(){
     addch(' ');
     wmove(stdscr,position_y,position_x-1);
     addch('@');
-    position_y--;
+    position_x--;
 }
 
 void Character::add_gold(int amount_of_gold){
