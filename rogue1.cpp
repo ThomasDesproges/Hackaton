@@ -2,7 +2,7 @@
 #include <string>
 #include <ncurses.h>
 
-// #include "message.h"
+#include "message.h"
 #include "generateur_salle_v2.h"
 #include "generateur_niveau_v1.h"
 #include "class_character.cpp"
@@ -95,6 +95,11 @@ void play () {
 
     // On affiche le héro.
     Hero.affiche();
+    
+    std::string str = "Welcome brave hero!";
+    const char* cstr = str.c_str() ;
+    message msg (cstr) ;
+    msg.print() ;
 
     char c = '\0';
     // On entre dans une boucle sans fin sauf si le caractère 'q' est
