@@ -4,10 +4,11 @@
 #include<ncurses.h>
 
 class Item;
+Item* search_item(std::vector <Item*>* liste_items,int posx, int posy);
 
 class Character{
     public :
-    Character(int position_x,int position_y, int point_de_vie, char controls[4]);
+    Character(int position_x,int position_y, int point_de_vie, char controls[4], std::vector<Item*>* p_liste_items);
 
     void affiche();
 
@@ -38,6 +39,5 @@ class Character{
     Item* inventaire[5];
     char* controls;
     bool remettre_la_porte;
-    
-
+    std::vector<Item*>* p_liste_items;
 };

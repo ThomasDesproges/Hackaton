@@ -8,6 +8,7 @@
 #include "generateur_niveau_v1.h"
 #include "class_character.cpp"
 #include "item.cpp"
+#include "search_item.h"
 
 
 
@@ -53,8 +54,9 @@ int pv1 = 100 ;
 int pv2 = 100 ;
 char commands1[4] = {TOP, RIGHT, BOTTOM, LEFT} ;
 char commands2[4] = {r, g, f, d} ;
-Character Hero1(xcursor, ycursor, pv1, commands1) ;
-Character Hero2(xcursor+2, ycursor+2, pv2, commands2) ;
+std::vector<Item*> p_liste_items [100];
+Character Hero1(xcursor, ycursor, pv1, commands1,p_liste_items) ;
+Character Hero2(xcursor+2, ycursor+2, pv2, commands2,p_liste_items) ;
 
 
 
@@ -120,10 +122,9 @@ void play () {
     Potion pot1(20,12) ;
     pot1.affiche();
 
-    std::vector<Item*> liste_items;
-    liste_items.push_back(&gold);
-    liste_items.push_back(&gold2);
-    liste_items.push_back(&pot1);
+    (*p_liste_items).push_back(&gold);
+    (*p_liste_items).push_back(&gold2);
+    (*p_liste_items).push_back(&pot1);
 
     // On affiche le héro.
     Hero1.affiche();
